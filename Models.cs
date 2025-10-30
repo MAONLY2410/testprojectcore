@@ -42,3 +42,9 @@ public class Warehouse
     public string location { get; set; }
     public string phone { get; set; }
 }
+
+public class Payment
+{
+    [Key]
+    public int payment_id { get; set; }
+}

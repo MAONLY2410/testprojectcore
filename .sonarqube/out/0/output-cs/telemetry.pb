@@ -1,0 +1,1 @@
+yRcC:\Users\USUARIO\OneDrive\Documentos\JAPDEVA\TestProjectCore\testprojectcore\TestProjectCore.csproj¢net9.0òCSharp13
