@@ -11,7 +11,7 @@ public class BloggingContext : DbContext
     public DbSet<Payment> Payments { get;  set;}
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql("Host=10.1.1.207;Port=5432;Database=proof;Username=postgres;Password=Arond1ght$;");
+        optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=proof;Username=postgres;Password=Arond1ght$;");
         //optionsBuilder.UseSqlServer("Server=localhost;Database=proof;User Id=sa;Password=Arond1ght$;"); versión anterior
     }
 }

@@ -47,4 +47,5 @@ public class Payment
 {
     [Key]
     public int payment_id { get; set; }
+    public string method { get; set; }
 }
