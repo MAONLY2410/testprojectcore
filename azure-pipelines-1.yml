@@ -20,6 +20,10 @@ jobs:
       echo "Timestamp: $(fullTimestamp)" > Maxito.log
       echo "Archivos modificados:" >> Maxito.log
       git diff --name-only >> Maxito.log
+      
+      echo "" >> Maxito.log
+      echo "Archivos nuevos agregados:" >> Maxito.log
+      git ls-files --others --exclude-standard >> Maxito.log
 
       git config --global user.email "bymynynimonya@gmail.com"
       git config --global user.name "MAONLY2410"
