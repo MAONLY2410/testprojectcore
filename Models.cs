@@ -50,4 +50,5 @@ public class Payment
     public string method { get; set; }
     public string notes { get; set; }
     public int amount { get; set; }
+    public DateTime date { get; set; }
 }
