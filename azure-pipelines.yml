@@ -87,13 +87,16 @@ jobs:
       echo "Archivos modificados:" >> changes.log
       git diff --name-only >> changes.log
 
-      #Mostrar archivos nuevos agregados:
+      # Mostrar archivos nuevos agregados
       echo "" >> changes.log
       echo "Archivos nuevos agregados:" >> changes.log
       git ls-files --others --exclude-standard >> changes.log
 
       git add changes.log
-      echo "Último commit"
       git commit -m "Automatizado por último vez en - $(fullTimestamp) [skip ci]"
+
+      # Evita conflictos entre agentes que apuntan al mismo repo
+      git pull --rebase origin main
+
       git push origin HEAD:main
     displayName: "Hacer cambios y pushear"
