@@ -1,0 +1,30 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  name: Local2Pool
+
+variables:
+  fullTimestamp: $[format('{0:yyyyMMdd}-{0:HHmmss}', pipeline.startTime)]
+
+jobs:
+- job: GitLogUpdate
+  displayName: 'Generar y subir Maxito.log'
+  steps:
+  - checkout: self
+    persistCredentials: true # Necesario para hacer push a GitHub
+
+  - script: |
+      echo "Timestamp: $(fullTimestamp)" > Maxito.log
+      echo "Archivos modificados:" >> Maxito.log
+      git diff --name-only >> Maxito.log
+
+      git config --global user.email "bymynynimonya@gmail.com"
+      git config --global user.name "MAONLY2410"
+
+      git add Maxito.log
+      git commit -m "Actualización automática - $(fullTimestamp) [skip ci]"
+      git push origin HEAD:main
+    displayName: 'Crear y subir Maxito.log'
