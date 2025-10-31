@@ -52,3 +52,9 @@ public class Payment
     public int amount { get; set; }
     public DateTime date { get; set; }
 }
+
+public class Supplier
+{
+    [Key]
+    public int supplier_id { get; set; }
+}
