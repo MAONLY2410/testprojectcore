@@ -30,11 +30,15 @@ jobs:
       git pull --rebase origin main
 
       echo "Timestamp: $(fullTimestamp)" > Maxito.log
-      echo "Archivos modificados respecto a origin/main:" >> Maxito.log
-      git diff origin/main --name-only >> Maxito.log
+
+      echo "Archivos modificados respecto al commit anterior:" >> Maxito.log
+      git diff HEAD~1 --name-only >> Maxito.log
+
       echo "" >> Maxito.log
       echo "Archivos nuevos agregados (sin seguimiento):" >> Maxito.log
       git ls-files --others --exclude-standard >> Maxito.log
+
       git add Maxito.log
       git commit -m "Actualización automática - $(fullTimestamp) [skip ci]"
       git push origin HEAD:main
+    displayName: 'Crear y subir Maxito.log'
