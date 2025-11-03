@@ -1,7 +1,13 @@
-trigger:
-  branches:
-    include:
-      - main
+trigger: none
+
+resources:
+  pipelines:
+    - pipeline: pipelineA # Es un sobrenombre nada más (Puede ser papitafritabañadaencocholate si quiero)
+      source: MAONLY2410.testprojectcore # Este debe coincidir con el nombre del primer pipeline (Nombre con el cual esta registrado el pipeline en el proyecto)
+      trigger:
+        branches:
+          include:
+            - main
 
 pool:
   name: Local2Pool
