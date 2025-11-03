@@ -23,19 +23,18 @@ jobs:
     persistCredentials: true # Necesario para hacer push a GitHub
 
   - script: |
-      echo "Timestamp: $(fullTimestamp)" > Maxito.log
-      echo "Archivos modificados:" >> Maxito.log
-      git diff --name-only >> Maxito.log
-      
-      echo "" >> Maxito.log
-      echo "Archivos nuevos agregados:" >> Maxito.log
-      git ls-files --others --exclude-standard >> Maxito.log
-
       git config --global user.email "bymynynimonya@gmail.com"
       git config --global user.name "MAONLY2410"
 
+      git checkout main
+      git pull --rebase origin main
+
+      echo "Timestamp: $(fullTimestamp)" > Maxito.log
+      echo "Archivos modificados respecto a origin/main:" >> Maxito.log
+      git diff origin/main --name-only >> Maxito.log
+      echo "" >> Maxito.log
+      echo "Archivos nuevos agregados (sin seguimiento):" >> Maxito.log
+      git ls-files --others --exclude-standard >> Maxito.log
       git add Maxito.log
       git commit -m "Actualización automática - $(fullTimestamp) [skip ci]"
-      git pull --rebase origin main
       git push origin HEAD:main
-    displayName: 'Crear y subir Maxito.log'
