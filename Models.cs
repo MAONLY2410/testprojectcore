@@ -57,4 +57,5 @@ public class Supplier
 {
     [Key]
     public int supplier_id { get; set; }
+    public string commercial_name { get; set; }
 }
